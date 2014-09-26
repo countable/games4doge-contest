@@ -13,6 +13,20 @@
 
   <body>
 
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<div style='height:20px; position:relative; border: 3px solid blue; border-radius: 5px'>
+  <div style='position:absolute; top:0; left:0; width:0%; bottom: 0; background-color: red' id='bar'></div>
+</div>
+
+<script>
+  $.get("https://dogechain.info/chain/Dogecoin/q/addressbalance/DDxa6AUa75cZzPygEaJoLH5tEARqTdP8oU", function(rsp){
+    console.log(rsp);
+    $("#bar").css('width', 100*parseFloat(rsp)/5000000 + '%');
+    $("#counter").text(rsp + " / 5000000 dogecoin raised!");
+  });
+</script>
+
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
