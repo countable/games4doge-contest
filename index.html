@@ -35,11 +35,14 @@
   <div></div>
 </div>
 
-<h3>
+<h1 id='counter'></h1>
 
 <div style='height:20px; position:relative; border: 3px solid blue; border-radius: 5px'>
   <div style='position:absolute; top:0; left:0; width:0%; bottom: 0; background-color: red' id='bar'></div>
 </div>
+
+<h3></h3>
+<p></p>
 
 <script>
   $.get("https://dogechain.info/chain/Dogecoin/q/addressbalance/DDxa6AUa75cZzPygEaJoLH5tEARqTdP8oU", function(rsp){
@@ -48,6 +51,52 @@
     $("#counter").text(rsp + " / 5000000 dogecoin raised!");
   });
 </script>
+
+<p>TLDR: Build a game that uses Dogecoin in the next month, get 1 million Dogecoins!</p>
+
+<p>I believe one great potentials, and "killer apps" if you will, for Dogecoin is to become the universal in-game currency. Whether or not, it's certainly true that one of the keys for us going to the moon is software infrastructure. If we build lots of popular apps that use dogecoin, the moon will follow in due course. For these reasons, ongoing discussion of an App contest has circulated for some time. For this contest, let's focus specifically on games. If it's a success (or not), a general app contest can always follow.</p>
+
+<p><strong>Dogecoin Game Contest</strong></p>
+
+<p>Once, we had a competition to build an electrum based wallet (<a href="http://www.reddit.com/r/dogecoin/comments/1upa5y/bounty_15_million_doge_for_the_first_person_to/" class="imgScanned">http://www.reddit.com/r/dogecoin/comments/1upa5y/bounty_15_million_doge_for_the_first_person_to/</a><span title="press 1 to open link" class="keyNavAnnotation">[1] </span>), and we had some great results. Let's do it again, but this time around, build an awesome game! The only rule is it must incorporate Dogecoin in some way. The community will vote on the winners of each category. The ultimate goal of this competition is to explore innovative uses for the Dogecoin currency.</p>
+
+<p><strong>Rules</strong></p>
+
+<p>You must start a new project. You cannot submit something that was finished prior to the contest. However, you may submit a "sequel" to something pre-existing to any category except the "most popular/viral" category. The game may be a web app, or native platform app (ios, windows, android..). All apps must be "secure" against theft of private data or dogecoins.</p>
+
+<p><strong>Example</strong></p>
+
+<p>See this Dogecoin space game faucet <a href="http://dt.htdt.ru/" class="imgScanned">http://dt.htdt.ru/</a><span title="press 2 to open link" class="keyNavAnnotation">[2] </span> , it's even open source! <a href="https://github.com/htdt/digital_trip" class="imgScanned">https://github.com/htdt/digital_trip</a><span title="press 3 to open link" class="keyNavAnnotation">[3] </span></p>
+
+<p><strong>Categories</strong></p>
+
+<p>The categories are especially designed to encourage games to be made. The following percentages of the pot will be assigned for each category in order of placement. (ie, first place in "most original" will get 10% of the pot)</p>
+
+<ul>
+<li><p>Most popular/ viral. Must be a new game started during this contest timeframe, not a sequel. - 30% to winner, 10% to runner up.</p></li>
+<li><p>Best game that incorporates Dogecoin as an in-game currency with in-game purchases. - 20% to winner.</p></li>
+<li><p>Best game the integrates DogeParty somehow - 20% to winner</p></li>
+<li><p>Most app store downloads (web based games not eligible for this) - 10% awarded one month after contest completion.</p></li>
+<li><p>Silliest / most ridiculous game - 10% to winner</p></li>
+</ul>
+
+<p><strong>Due Date</strong></p>
+
+<p>End of the day (PST) on October 31, 2014.</p>
+
+<p><strong>Prize Pot and Sponsors</strong></p>
+
+<p>A pot will be added to during competition, hopefully growing if enough hype builds. I'll start the pot with 1 million dogecoins ( <a href="/u/echo85" class="userTagged imgScanned">/u/echo85</a><span class="RESUserTag"><a class="userTagLink RESUserTagImage" username="echo85" title="set a tag" href="javascript:void(0)"></a></span> <a href="javascript:void(0)" class="voteWeight" style="display: none;">[vw]</a><span title="press 4 to open link" class="keyNavAnnotation">[4] </span> ). Unless / until a better option volunteers itself, I'll be storing the pot in a dedicated wallet. Why should you trust me? Well, I've tipped about 4 million Doge on reddit and twitter, much at higher prices than we have now! Also, you know who I am, and I'll name my Canadian company "countable.ca" as the account holder. It's a small company but it's been around quite a while. At the end of the day, if you don't trust me to watch the account, DON'T donate! If you make a large contribution, you'll be mentioned in all communication here on as a sponsor. For my contribution, my little digital shop project, DogeLet.com will be named as a sponsor.</p>
+
+<p><strong>Guide for Developers</strong></p>
+
+<p>I suggest using block.io in order to integrate Dogecoin easily without running your own copy of dogecoind. If you're awarding Dogecoin to users for any type of in-game action, you'll need a way to verify they're not cheating. One straightforward way is with a server component such as socket.io in the example above. If anyone has more examples or resources for developers, please post them for everyone to benefit from!</p>
+
+<p><strong>Suggestions are Welcome</strong></p>
+
+<p>Have an idea to improve the contest? It officially starts this Friday at 11pm PST. Changes may be made until that time. Time permitting, I'll be creating a website to track funds and rules as well.</p>
+
+<p>Thanks to all who participate in this moon gaming initiative! (should it be called games4moon instead?)</p>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
