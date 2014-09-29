@@ -34,24 +34,26 @@
   <div></div>
 </div>
 
-<h1 id='counter'></h1>
 
-<div style='height:20px; position:relative; border: 3px solid blue; border-radius: 5px'>
-  <div style='position:absolute; top:0; left:0; width:0%; bottom: 0; background-color: red' id='bar'></div>
-</div>
 
 <img src="images/games4doge.jpg">
 <script>
   $.get("https://dogechain.info/chain/Dogecoin/q/addressbalance/DDxa6AUa75cZzPygEaJoLH5tEARqTdP8oU", function(rsp){
     console.log(rsp);
     $("#bar").css('width', 100*parseFloat(rsp)/5000000 + '%');
-    $("#counter").text(rsp + " / 5000000 dogecoin raised!");
+    $("#counter").text(rsp + " / Moon (currently 5 million) Dogecoin raised at DDxa6AUa75cZzPygEaJoLH5tEARqTdP8oU!");
   });
 </script>
 
 <h3>Could Dogecin Become a Universal Game Currency?</h3>
 
 <p>If we help make it happen, I believe the answer is yes!</p>
+
+<h1 id='counter'></h1>
+
+<div style='height:20px; position:relative; border: 3px solid blue; border-radius: 5px'>
+  <div style='position:absolute; top:0; left:0; width:0%; bottom: 0; background-color: red' id='bar'></div>
+</div>
 
 <h3>Contest for Games using Dogecoin</h3>
 
