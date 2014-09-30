@@ -1,0 +1,51 @@
+<html><head></head><body>
+  
+  <h1>Example Dogecoin In-app Purchase.</h1>
+  <h2>your address: <span id="address"></span></h2>
+  <h2>your balance: <span id="balance"></span></h2>
+  <h2>(<span id="pending"></span> pending deposit)</h2>
+  
+  <p>
+    Buy the hammer of victory for 3 Dogecoins! <button onclick="buy()">Buy!</button>
+  </p>
+  
+  <script src='/socket.io/socket.io.js'></script>
+  <script>
+  
+    function buy(){
+        socket.emit('buy_hammer');
+    }
+    
+    var socket = io();
+    
+    function showAddress(){
+      document.getElementById('address').innerHTML = localStorage['address'];
+      socket.emit('get_balance', {address: localStorage['address']});
+    }
+    
+    socket.on('connect', function(){
+      
+      console.log('connected');
+      
+      if (!localStorage['address']) {
+        socket.emit('get_address');
+      } else {
+        showAddress();
+      }
+      
+      socket.on('got_address', function(rsp){
+        console.log('got address', rsp);
+        localStorage['address'] = rsp.data.address;
+        showAddress();
+      });
+      
+      socket.on('got_balance',  function(rsp){
+        console.log('got balance',rsp);
+        document.getElementById('balance').innerHTML = rsp.data.available_balance;
+        document.getElementById('pending').innerHTML = rsp.data.unconfirmed_received_balance;
+      })
+      
+    });
+
+  </script>
+</body></html>

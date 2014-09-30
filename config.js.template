@@ -1,0 +1,5 @@
+module.exports = function(app){
+  app.set('BLOCK_IO_API_KEY', 'YOUR KEY HERE');
+  app.set('BLOCK_IO_SECRET_PIN', 'YOUR PIN HERE');
+  app.set('GAME_ADDRESS', 'YOUR OWN DOGECOIN ADDRESS');
+}
