@@ -1,21 +1,64 @@
 <html><head></head><body>
   
+  <style>
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    button {
+      border-width: 0;
+      background-color: darkred;
+      font-size: 50px;
+      padding: 20px 40px;
+      cursor: pointer;
+      color: white;
+    }
+    button:hover {
+      background-color: red;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td, th {
+      border: 1px solid black;
+      padding: 10px;
+    }
+  </style>
+  
   <h1>Example Dogecoin In-app Purchase.</h1>
-  <h2>your address: <span id="address"></span></h2>
-  <h2>your balance: <span id="balance"></span></h2>
+  <hr/>
+  <h2>This is your Dogecoin address: <span id="address"></span></h2>
+  <h2><img src="dogecoin-d.png" width=150> &times; <span id="balance"></span> Dogecoins in your wallet.</h2>
   <h2>(<span id="pending"></span> pending deposit)</h2>
   
-  <p>
-    Buy the hammer of victory for 3 Dogecoins! <button onclick="buy()">Buy!</button>
-  </p>
+  <h2>
+    Items for sale:
+  </h2>
+  <table>
+    <tr>
+      <th>Hammer of Victory
+      </th>
+      <td>
+        <img src="hammer.png" width=150>
+      </td>
+      <td>3 Dogecoins! 
+      </td>
+      <td>
+        <button onclick="buy()">Buy!</button>
+      </td>
+    </tr>
+  </table>
+  
+  <h2>You own <span id="hammers"></span> hammers of victory.</h2>
   
   <script src='/socket.io/socket.io.js'></script>
   <script>
-  
+    
     function buy(){
-        socket.emit('buy_hammer');
+        socket.emit('buy_hammer', localStorage['address']);
     }
     
+    // Initialize socket.io . Why not just use ajax? Because for a game involving real stakes like Dogecoin,
+    // you need to validate the client's state on the server to prevent cheating anyway.    
     var socket = io();
     
     function showAddress(){
@@ -23,27 +66,38 @@
       socket.emit('get_balance', {address: localStorage['address']});
     }
     
+    function showHammers(){
+      document.getElementById('hammers').innerHTML = localStorage['hammers'] || 0;
+    }
+    
+    showHammers();
+    
     socket.on('connect', function(){
       
-      console.log('connected');
-      
       if (!localStorage['address']) {
+        // Careful with this, it could leak addresses. Normally issue the user an address when they sign up for an account in your game.
         socket.emit('get_address');
       } else {
         showAddress();
       }
       
       socket.on('got_address', function(rsp){
-        console.log('got address', rsp);
         localStorage['address'] = rsp.data.address;
         showAddress();
       });
       
       socket.on('got_balance',  function(rsp){
-        console.log('got balance',rsp);
         document.getElementById('balance').innerHTML = rsp.data.available_balance;
         document.getElementById('pending').innerHTML = rsp.data.unconfirmed_received_balance;
-      })
+      });
+      
+      socket.on('bought_hammer', function(rsp){
+        // refresh your balance.
+        socket.emit('get_balance', {address: localStorage['address']});
+        localStorage['hammers'] = parseInt(localStorage['hammers'] || '0') + 1;
+        showHammers();
+        alert('you bought the hammer of victory.')
+      });
       
     });
 
