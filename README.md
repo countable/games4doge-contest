@@ -1,7 +1,7 @@
-games4doge-contest
-==================
+games4doge
+==========
 
-A Dogecoin Game Contest! This branch (master) has a sample Node.JS based game using Block.IO . The contest website is in the other, gh-pages branch.
+This branch (master) of this repository is an example Node.JS based game using Block.IO . The contest website is in the other, gh-pages branch.
 
 Demo
 ====
@@ -20,4 +20,9 @@ node app
 ```
 
 And browse to localhost:3000
+
+Disclaimer
+==========
+
+A real game should be more careful with security. This demo is kept intentionally brief as a demonstration of how you could use Block.IO only.
 
